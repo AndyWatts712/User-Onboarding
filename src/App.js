@@ -4,6 +4,7 @@ import './App.css';
 import axios from 'axios';
 import * as yup from 'yup'
 import formSchema from './validation/formSchema'
+import UserList from './components/UserList'
 
 const initialFormValues = {
   first_name: '',
@@ -63,9 +64,32 @@ const inputChange = (name, value) => {
         [name]: value
       })
 }
+
+const submit = () => {
+  const newUser = {
+    first_name: formValues.first_name.trim(),
+    last_name: formValues.last_name.trim(),
+    email: formValues.email.trim()
+  }
+  postNewUser(newUser)
+}
+
+useEffect(() => {
+  formSchema.isValid(formValues).then(valid => {
+    setDisabled(!valid)
+  })
+}, [formValues])
   return (
     <div className="App">
-      <Form />
+      <h1>User Onboarding</h1>
+      <Form 
+        values = {formValues}
+        errors = {formErrors}
+        submit = {submit}
+        disabled = {disabled}
+        inputChange = {inputChange}
+        />
+        <UserList userData = {userData} />
     </div>
   );
 }

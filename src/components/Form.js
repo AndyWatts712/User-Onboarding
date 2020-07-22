@@ -1,16 +1,38 @@
 import React from 'react'
 
-export default function Form() {
+export default function Form(props) {
+    const {
+        submit,
+        errors,
+        values,
+        disabled,
+        inputChange
+    } = props
 
-    return(
-        <form>
-            <label>First Name: 
+    const onSubmit = evt => {
+        evt.preventDefault()
+        submit()
+    }
+
+    const onInputChange = evt => {
+        const { name, value } = evt.target
+        inputChange(name, value)
+    }
+
+    return (
+        <form onSubmit={submit}>
+            <div>
+                <div>{errors.first_name}</div>
+            </div>
+            <label>First Name:
                 <input
-                 type='text'
-                 name='first_name'
-                 />
+                    type='text'
+                    name='first_name'
+                    value={values.first_name}
+                    onChange={onInputChange}
+                />
             </label>
-            <button>Submit</button>
+            <button disabled = {disabled}>Submit</button>
         </form>
     )
 }

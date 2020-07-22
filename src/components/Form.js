@@ -4,10 +4,10 @@ export default function Form() {
 
     return(
         <form>
-            <label>Name: 
+            <label>First Name: 
                 <input
                  type='text'
-                 name='name'
+                 name='first_name'
                  />
             </label>
             <button>Submit</button>

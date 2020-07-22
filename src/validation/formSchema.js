@@ -13,3 +13,4 @@ const formSchema = yup.object().shape({
       .string()
       .required("First name is Required"),
   })
+  export default formSchema;

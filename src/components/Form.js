@@ -32,7 +32,23 @@ export default function Form(props) {
                     onChange={onInputChange}
                 />
             </label>
-            <button >Submit</button>
+            <label>Last Name:
+                <input
+                    type='text'
+                    name='last_name'
+                    value={values.last_name}
+                    onChange={onInputChange}
+                />
+            </label>
+            <label>email:
+                <input
+                    type='text'
+                    name='email'
+                    value={values.email}
+                    onChange={onInputChange}
+                />
+            </label>
+            <button disabled = {disabled}>Submit</button>
         </form>
     )
 }

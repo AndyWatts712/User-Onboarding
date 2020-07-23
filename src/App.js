@@ -9,13 +9,15 @@ import UserList from './components/UserList'
 const initialFormValues = {
   first_name: '',
   last_name: '',
-  email: ''
+  email: '',
+  terms: false
 }
 
 const initialFormErrors = {
   first_name: '',
   last_name: '',
-  email: ''
+  email: '',
+  terms: false
 }
 
 const initialUserData = []
@@ -80,6 +82,14 @@ const submit = () => {
   }
   postNewUser(newUser)
 }
+
+const checkboxChange = (name, isChecked) => {
+  setFormValues({
+    ...formValues,
+    [name]: isChecked
+  })
+}
+
 useEffect(() => {
   getUser()
 }, [])
@@ -98,6 +108,7 @@ useEffect(() => {
         submit = {submit}
         disabled = {disabled}
         inputChange = {inputChange}
+        checkboxChange = {checkboxChange}
         />
         <UserList userData = {userData} />
     </div>

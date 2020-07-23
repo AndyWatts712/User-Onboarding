@@ -6,7 +6,8 @@ export default function Form(props) {
         errors,
         values,
         disabled,
-        inputChange
+        inputChange,
+        checkboxChange
     } = props
 
     const onSubmit = evt => {
@@ -19,6 +20,10 @@ export default function Form(props) {
         inputChange(name, value)
     }
 
+    const onCheckboxChange = evt => {
+        const { name, checked } = evt.target
+        checkboxChange(name, checked)
+    }
     return (
         <form onSubmit={onSubmit}>
             <div>
@@ -48,7 +53,15 @@ export default function Form(props) {
                     onChange={onInputChange}
                 />
             </label>
-            <button disabled = {disabled}>Submit</button>
+            <label>Terms:
+                <input
+                    type='checkbox'
+                    name='terms'
+                    checked = {values.terms === true}
+                    onChange={onCheckboxChange}
+                />
+            </label>
+            <button disabled={disabled}>Submit</button>
         </form>
     )
 }

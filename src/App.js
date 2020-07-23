@@ -82,7 +82,7 @@ const submit = () => {
 }
 useEffect(() => {
   getUser()
-}, [setUserData])
+}, [])
 
 useEffect(() => {
   formSchema.isValid(formValues).then(valid => {

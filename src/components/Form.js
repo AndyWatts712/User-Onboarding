@@ -54,7 +54,7 @@ export default function Form(props) {
                 />
             </label>
             <label>Terms:
-                <input
+                <input id = 'termsCheck'
                     type='checkbox'
                     name='terms'
                     checked = {values.terms === true}

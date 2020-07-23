@@ -20,7 +20,7 @@ export default function Form(props) {
     }
 
     return (
-        <form onSubmit={submit}>
+        <form onSubmit={onSubmit}>
             <div>
                 <div>{errors.first_name}</div>
             </div>
@@ -32,7 +32,7 @@ export default function Form(props) {
                     onChange={onInputChange}
                 />
             </label>
-            <button disabled = {disabled}>Submit</button>
+            <button >Submit</button>
         </form>
     )
 }

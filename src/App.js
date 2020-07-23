@@ -27,15 +27,22 @@ export default function App() {
   const [formErrors, setFormErrors] = useState(initialFormErrors)
   const [disabled, setDisabled] = useState(initialDisabled)
 
-  const updateForm = (inputName, inputValue) => {
-    const updatedFormValues = { ...formValues, [inputName]: inputValue }
-    setFormValues(updatedFormValues)
+ 
+  const getUser = () => {
+    axios.get('https://reqres.in/api/users')
+      .then((res) => {
+        setUserData(res.data.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   const postNewUser = newUser => {
     axios.post('https://reqres.in/api/users', newUser)
      .then(res => {
-       console.log(res.data)
+       setUserData([res.data, ...userData])
+       setFormValues(initialFormValues)
      })
   }
 /////////////////FORM ACTIONS///////////////
@@ -73,6 +80,9 @@ const submit = () => {
   }
   postNewUser(newUser)
 }
+useEffect(() => {
+  getUser()
+}, [setUserData])
 
 useEffect(() => {
   formSchema.isValid(formValues).then(valid => {

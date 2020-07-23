@@ -1,10 +1,16 @@
 import React from 'react'
 
 export default function UserList(props) {
-    const { first_name } = props
+    const { userData } = props
+    console.log('PROPS', props)
+
     return (
-        <div>
-            <h3>Name: {first_name}</h3>
-        </div>
+        userData.map((usr) => {
+            return (
+                <div key={usr.id}>
+                    <h3>Name: {usr.first_name}</h3>
+                </div>
+            )
+        })
     )
 }
